@@ -334,6 +334,26 @@
         border-color: var(--oxblood);
       }
 
+      .faq-item summary {
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item summary::after {
+        content: "+";
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 1.1rem;
+        line-height: 1;
+      }
+
+      .faq-item[open] summary::after {
+        content: "−";
+      }
+
       @media (max-width: 767px) {
         .outline-word {
           -webkit-text-stroke-width: 0.7px;
@@ -377,6 +397,7 @@
           <a class="transition hover:text-smoke" href="#services">Услуги</a>
           <a class="transition hover:text-smoke" href="#process">Процесс</a>
           <a class="transition hover:text-smoke" href="#estimate">Стоимость</a>
+          <a class="transition hover:text-smoke" href="#faq">Вопросы</a>
         </nav>
 
         <div class="flex items-center gap-3">
@@ -409,6 +430,7 @@
           <a class="mobile-link border-b border-white/15 py-4 text-2xl" href="#services">Услуги</a>
           <a class="mobile-link border-b border-white/15 py-4 text-2xl" href="#process">Процесс</a>
           <a class="mobile-link border-b border-white/15 py-4 text-2xl" href="#estimate">Стоимость</a>
+          <a class="mobile-link border-b border-white/15 py-4 text-2xl" href="#faq">Вопросы</a>
           <a class="mobile-link py-4 text-2xl text-paper" href="#contact">Контакты</a>
         </div>
       </nav>
@@ -843,6 +865,39 @@
               <p class="mt-3 text-sm leading-relaxed text-black/60">Отдаю код, домен и инструкцию. Первые 30 дней исправляю ошибки бесплатно.</p>
             </li>
           </ol>
+
+          <div id="guarantees" class="reveal mt-16 scroll-mt-24 border-t border-black/25 pt-12 lg:mt-20">
+            <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-black/55">Гарантии и безопасность</p>
+            <h3 class="mt-4 max-w-2xl text-3xl font-semibold uppercase tracking-[-0.04em] sm:text-4xl">
+              Чтобы не пропасть<br />и не сломать
+            </h3>
+            <div class="mt-10 grid border-l border-t border-black/25 md:grid-cols-3">
+              <article class="border-b border-r border-black/25 p-6">
+                <p class="font-editorial text-2xl italic text-oxblood">01</p>
+                <h4 class="mt-6 text-xl font-semibold uppercase">Официальный договор</h4>
+                <p class="mt-3 text-sm leading-relaxed text-black/60">
+                  Работаю как самозанятая. Перед стартом фиксируем состав,
+                  сроки и сумму в договоре — не в переписке «на словах».
+                </p>
+              </article>
+              <article class="border-b border-r border-black/25 p-6">
+                <p class="font-editorial text-2xl italic text-oxblood">02</p>
+                <h4 class="mt-6 text-xl font-semibold uppercase">Поэтапная оплата</h4>
+                <p class="mt-3 text-sm leading-relaxed text-black/60">
+                  Предоплата только за текущий этап. Следующую часть берём,
+                  когда вы видите рабочую ссылку и принимаете шаг.
+                </p>
+              </article>
+              <article class="border-b border-r border-black/25 p-6">
+                <p class="font-editorial text-2xl italic text-oxblood">03</p>
+                <h4 class="mt-6 text-xl font-semibold uppercase">30 дней поддержки</h4>
+                <p class="mt-3 text-sm leading-relaxed text-black/60">
+                  После запуска месяц исправляю ошибки бесплатно.
+                  Код, домен и доступы остаются у вас.
+                </p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -980,10 +1035,68 @@
         </div>
       </section>
 
-      <!-- Контакт пока безопасно работает без фиктивной Telegram-ссылки. -->
+      <section id="faq" class="scroll-mt-20 bg-bone px-4 py-20 text-ink sm:px-8 lg:py-28">
+        <div class="mx-auto max-w-[1360px]">
+          <div class="reveal grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-black/55">05 / faq</p>
+              <h2 class="mt-5 text-balance text-5xl font-bold uppercase leading-[0.92] tracking-[-0.055em] sm:text-7xl">
+                Сначала ответы,<br />потом созвон
+              </h2>
+            </div>
+            <p class="max-w-lg self-end text-lg leading-relaxed text-black/65">
+              Частые страхи закрываю здесь, чтобы на разговоре осталась
+              только задача, а не «а вдруг пропадёт».
+            </p>
+          </div>
+
+          <div class="reveal mt-12 border-t border-black/25">
+            <details class="faq-item border-b border-black/25">
+              <summary class="flex min-h-16 items-center justify-between gap-6 py-5 text-left text-xl font-semibold uppercase tracking-[-0.03em] sm:text-2xl">
+                А что с хостингом и доменом?
+              </summary>
+              <p class="max-w-3xl pb-6 leading-relaxed text-black/65">
+                Помогаю зарегистрировать их на ваши данные. Логин, пароль
+                и код остаются у вас — сайт не «живёт» на моём аккаунте.
+              </p>
+            </details>
+            <details class="faq-item border-b border-black/25">
+              <summary class="flex min-h-16 items-center justify-between gap-6 py-5 text-left text-xl font-semibold uppercase tracking-[-0.03em] sm:text-2xl">
+                Смогу ли я сам менять тексты или товары?
+              </summary>
+              <p class="max-w-3xl pb-6 leading-relaxed text-black/65">
+                Да. Для лендинга и каталога передаю понятную инструкцию,
+                что править в коде. Если нужна правка без файлов —
+                собираю простую админ-часть на Flask и включаю это в смету.
+              </p>
+            </details>
+            <details class="faq-item border-b border-black/25">
+              <summary class="flex min-h-16 items-center justify-between gap-6 py-5 text-left text-xl font-semibold uppercase tracking-[-0.03em] sm:text-2xl">
+                Что если на сайте что-то сломается?
+              </summary>
+              <p class="max-w-3xl pb-6 leading-relaxed text-black/65">
+                В течение первого месяца любые исправления с моей стороны
+                бесплатны. После этого чиню по договорённости, без сюрпризов
+                в счёте.
+              </p>
+            </details>
+            <details class="faq-item border-b border-black/25">
+              <summary class="flex min-h-16 items-center justify-between gap-6 py-5 text-left text-xl font-semibold uppercase tracking-[-0.03em] sm:text-2xl">
+                Как оплачиваем работу?
+              </summary>
+              <p class="max-w-3xl pb-6 leading-relaxed text-black/65">
+                По договору, как самозанятая. Предоплата только за текущий
+                этап. Следующую часть берём, когда этап принят по рабочей ссылке.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Контакт. -->
       <section id="contact" class="scroll-mt-20 bg-oxblood px-4 py-20 sm:px-8 lg:py-28">
         <div class="mx-auto max-w-[1360px]">
-          <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-paper/70">05 / contact</p>
+          <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-paper/70">06 / contact</p>
           <div class="mt-8 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
             <h2 class="text-balance text-[clamp(3.6rem,9vw,8.5rem)] font-extrabold uppercase leading-[0.8] tracking-[-0.07em]">
               Есть задача?<br /><span class="font-editorial font-medium italic normal-case">Разберём.</span>
@@ -1045,6 +1158,10 @@
           Задачи проектирования
         </h3>
         <ul id="dialog-tasks" class="mt-4 divide-y divide-black/15 border-y border-black/15"></ul>
+        <h3 id="dialog-inside-title" class="mt-8 font-mono text-[10px] uppercase tracking-[0.24em] text-black/50">
+          Что внутри
+        </h3>
+        <ul id="dialog-inside" class="mt-4 divide-y divide-black/15 border-y border-black/15"></ul>
         <h3 class="mt-8 font-mono text-[10px] uppercase tracking-[0.24em] text-black/50">Что сделано</h3>
         <ul id="dialog-features" class="mt-4 divide-y divide-black/15 border-y border-black/15"></ul>
         <p id="dialog-note" class="mt-6 border-l-2 border-oxblood pl-4 text-sm leading-relaxed text-black/60"></p>

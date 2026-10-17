@@ -38,6 +38,12 @@ const CASES = {
       "Дать фильтр и поиск, которые удобно нажимать пальцем",
       "Собрать заявку на конкретный товар, не уводя со страницы в корзину",
     ],
+    inside: [
+      "Чистый семантический HTML5: header, main, form, dialog",
+      "Сетка Flexbox/Grid без конструктора",
+      "Логика на JavaScript, без внешних плагинов",
+      "Лёгкая страница: нет лишних библиотек и тяжёлой галереи",
+    ],
     features: [
       "Категории и фильтрация ассортимента",
       "Поиск по названию и описанию",
@@ -60,6 +66,12 @@ const CASES = {
       "Провести путь от витрины до заказа без сервера",
       "Не терять корзину, если человек обновил страницу",
       "Честно объяснить, что оплата картой здесь ещё не подключена",
+    ],
+    inside: [
+      "Семантический HTML5 и доступные диалоги корзины",
+      "Сетка Flexbox/Grid, адаптив без конструктора",
+      "Корзина на чистом JavaScript, без плагинов",
+      "Состояние заказа хранится в браузере, без скрытых сервисов",
     ],
     features: [
       "Каталог и фильтры",
@@ -84,6 +96,12 @@ const CASES = {
       "Связать несколько страниц без конструктора",
       "Довести человека до брони, не потеряв тон бренда",
     ],
+    inside: [
+      "Семантический HTML5 на нескольких связанных страницах",
+      "Сетка Flexbox/Grid и типографика без конструктора",
+      "Интерфейс на HTML/CSS/JS, без внешних плагинов",
+      "Форма брони без сторонней CRM: путь остаётся на сайте",
+    ],
     features: [
       "Несколько связанных страниц",
       "Главный экран с характером бренда",
@@ -104,6 +122,12 @@ const CASES = {
       "Сохранить заказ на сервере, а не только в браузере",
       "Провести тестовый платёж без списания живых денег",
       "Сообщить владельцу о заказе и показать статус оплаты",
+    ],
+    inside: [
+      "Семантический HTML5 на клиентской части",
+      "Сервер на Flask, без WordPress и плагинов оплаты",
+      "ЮKassa API и Telegram подключаю напрямую",
+      "Заказ и статус платежа живут в базе, не только в браузере",
     ],
     features: [
       "Серверное создание заказа",
@@ -238,6 +262,8 @@ function setupCaseDialog() {
   const description = document.getElementById("dialog-description");
   const tasksTitle = document.getElementById("dialog-tasks-title");
   const tasks = document.getElementById("dialog-tasks");
+  const insideTitle = document.getElementById("dialog-inside-title");
+  const inside = document.getElementById("dialog-inside");
   const features = document.getElementById("dialog-features");
   const stack = document.getElementById("dialog-stack");
   const note = document.getElementById("dialog-note");
@@ -257,8 +283,11 @@ function setupCaseDialog() {
     note.textContent = item.note;
 
     const taskItems = item.tasks || [];
+    const insideItems = item.inside || [];
     tasksTitle.hidden = taskItems.length === 0;
+    insideTitle.hidden = insideItems.length === 0;
     fillNumberedList(tasks, taskItems);
+    fillNumberedList(inside, insideItems);
     fillNumberedList(features, item.features);
     toggleActionLink(demo, item.demo);
     toggleActionLink(code, item.code);
