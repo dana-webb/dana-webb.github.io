@@ -32,6 +32,12 @@ const CASES = {
       "Концепт каталога для бренда ухода: человек быстро находит категорию, смотрит товар и оставляет заявку без сложной корзины.",
     stack: "HTML5 · CSS3 · JavaScript",
     demo: "demo-siyanie.html",
+    code: "https://github.com/dana-webb/dana-webb.github.io/blob/main/demo-siyanie.html",
+    tasks: [
+      "Показать ассортимент так, чтобы клиент не терялся среди позиций",
+      "Дать фильтр и поиск, которые удобно нажимать пальцем",
+      "Собрать заявку на конкретный товар, не уводя со страницы в корзину",
+    ],
     features: [
       "Категории и фильтрация ассортимента",
       "Поиск по названию и описанию",
@@ -49,6 +55,12 @@ const CASES = {
       "Клиентская часть небольшого магазина: каталог, изменение количества, сохранение корзины и последовательное оформление заказа.",
     stack: "HTML5 · CSS3 · JavaScript",
     demo: "demo-shop.html",
+    code: "https://github.com/dana-webb/dana-webb.github.io/blob/main/demo-shop.html",
+    tasks: [
+      "Провести путь от витрины до заказа без сервера",
+      "Не терять корзину, если человек обновил страницу",
+      "Честно объяснить, что оплата картой здесь ещё не подключена",
+    ],
     features: [
       "Каталог и фильтры",
       "Добавление и удаление товаров",
@@ -66,6 +78,12 @@ const CASES = {
       "Многостраничный сайт камерного пространства: главная с атмосферой, программы, страница о доме и форма брони визита.",
     stack: "HTML5 · CSS3 · JavaScript",
     demo: "demo-tiho.html",
+    code: "https://github.com/dana-webb/dana-webb.github.io/blob/main/demo-tiho.html",
+    tasks: [
+      "Передать характер места первым экраном, а не списком цен",
+      "Связать несколько страниц без конструктора",
+      "Довести человека до брони, не потеряв тон бренда",
+    ],
     features: [
       "Несколько связанных страниц",
       "Главный экран с характером бренда",
@@ -82,6 +100,11 @@ const CASES = {
     description:
       "Серверный концепт: заказ сохраняется в базе, тестовый платёж создаётся через ЮKassa, владелец получает уведомление.",
     stack: "HTML5 · CSS3 · JavaScript · Flask · ЮKassa API · Telegram",
+    tasks: [
+      "Сохранить заказ на сервере, а не только в браузере",
+      "Провести тестовый платёж без списания живых денег",
+      "Сообщить владельцу о заказе и показать статус оплаты",
+    ],
     features: [
       "Серверное создание заказа",
       "Тестовый платёж ЮKassa",
@@ -175,16 +198,53 @@ function setupRevealAnimation() {
   elements.forEach((element) => observer.observe(element));
 }
 
+function fillNumberedList(container, items) {
+  container.replaceChildren();
+
+  items.forEach((item, index) => {
+    const row = document.createElement("li");
+    row.className = "grid grid-cols-[36px_1fr] gap-3 py-3 text-sm text-black/70";
+
+    const number = document.createElement("span");
+    number.className = "font-mono text-[9px] text-black/40";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    const text = document.createElement("span");
+    text.textContent = item;
+
+    row.append(number, text);
+    container.append(row);
+  });
+}
+
+function toggleActionLink(link, href) {
+  if (href) {
+    link.href = href;
+    link.classList.remove("hidden");
+    link.classList.add("flex");
+    return;
+  }
+
+  link.removeAttribute("href");
+  link.classList.add("hidden");
+  link.classList.remove("flex");
+}
+
 function setupCaseDialog() {
   const dialog = document.getElementById("case-dialog");
   const closeButton = document.getElementById("dialog-close");
   const label = document.getElementById("dialog-label");
   const title = document.getElementById("dialog-title");
   const description = document.getElementById("dialog-description");
+  const tasksTitle = document.getElementById("dialog-tasks-title");
+  const tasks = document.getElementById("dialog-tasks");
   const features = document.getElementById("dialog-features");
   const stack = document.getElementById("dialog-stack");
   const note = document.getElementById("dialog-note");
   const demo = document.getElementById("dialog-demo");
+  const code = document.getElementById("dialog-code");
+
+  if (!dialog || !closeButton) return;
 
   function openCase(caseId) {
     const item = CASES[caseId];
@@ -196,33 +256,12 @@ function setupCaseDialog() {
     stack.textContent = item.stack ? "Стек: " + item.stack : "";
     note.textContent = item.note;
 
-    if (item.demo) {
-      demo.href = item.demo;
-      demo.classList.remove("hidden");
-      demo.classList.add("flex");
-    } else {
-      demo.removeAttribute("href");
-      demo.classList.add("hidden");
-      demo.classList.remove("flex");
-    }
-
-    features.replaceChildren();
-
-    item.features.forEach((feature, index) => {
-      const row = document.createElement("li");
-      row.className =
-        "grid grid-cols-[36px_1fr] gap-3 py-3 text-sm text-black/70";
-
-      const number = document.createElement("span");
-      number.className = "font-mono text-[9px] text-black/40";
-      number.textContent = String(index + 1).padStart(2, "0");
-
-      const text = document.createElement("span");
-      text.textContent = feature;
-
-      row.append(number, text);
-      features.append(row);
-    });
+    const taskItems = item.tasks || [];
+    tasksTitle.hidden = taskItems.length === 0;
+    fillNumberedList(tasks, taskItems);
+    fillNumberedList(features, item.features);
+    toggleActionLink(demo, item.demo);
+    toggleActionLink(code, item.code);
 
     if (!dialog.open) {
       dialog.showModal();
