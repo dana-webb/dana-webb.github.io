@@ -8,7 +8,7 @@
  */
 
 /* Ник указывается без символа @. Пустое значение не создаёт неверную ссылку. */
-const TELEGRAM_USER = "";
+const TELEGRAM_USER = "dana_web";
 
 /* Все числа калькулятора собраны в одном месте, чтобы их было легко менять. */
 const SITE_TYPES = {
@@ -26,10 +26,11 @@ const FEATURES = {
 /* Тексты подробностей отделены от разметки карточек. */
 const CASES = {
   catalog: {
-    label: "Учебный проект · каталог",
+    label: "Инженерный концепт · каталог",
     title: "Каталог «Сияние»",
     description:
-      "Прототип каталога для бренда ухода. Основная задача — дать человеку быстро найти нужную категорию, изучить товар и перейти к заявке без сложного оформления.",
+      "Концепт каталога для бренда ухода: человек быстро находит категорию, смотрит товар и оставляет заявку без сложной корзины.",
+    stack: "HTML5 · CSS3 · JavaScript",
     features: [
       "Категории и фильтрация ассортимента",
       "Поиск по названию и описанию",
@@ -38,13 +39,14 @@ const CASES = {
       "Простой сценарий заявки",
     ],
     note:
-      "Это учебный проект, поэтому здесь нет выдуманных продаж, клиентов или показателей конверсии.",
+      "Это демонстрационный концепт, а не чужой клиентский кейс. Показатели продаж здесь не придуманы.",
   },
   shop: {
-    label: "Учебный проект · интернет-магазин",
+    label: "Инженерный концепт · интернет-магазин",
     title: "Магазин с корзиной",
     description:
       "Клиентская часть небольшого магазина: каталог, изменение количества, сохранение корзины и последовательное оформление заказа.",
+    stack: "HTML5 · CSS3 · JavaScript",
     features: [
       "Каталог и фильтры",
       "Добавление и удаление товаров",
@@ -53,13 +55,14 @@ const CASES = {
       "Проверка формы оформления",
     ],
     note:
-      "Проект демонстрирует интерфейс и логику корзины. Боевой магазин дополнительно требует сервер, базу данных, оплату, чеки и мониторинг.",
+      "Концепт показывает интерфейс и логику корзины. Боевой магазин дополнительно требует сервер, базу данных, оплату, чеки и мониторинг.",
   },
   payment: {
-    label: "Учебный прототип · сервер и оплата",
+    label: "Инженерный концепт · сервер и оплата",
     title: "Магазин + ЮKassa",
     description:
-      "Серверный учебный проект, в котором заказ сохраняется в базе, тестовый платёж создаётся через ЮKassa, а владелец получает уведомление.",
+      "Серверный концепт: заказ сохраняется в базе, тестовый платёж создаётся через ЮKassa, владелец получает уведомление.",
+    stack: "HTML5 · CSS3 · JavaScript · Flask · ЮKassa API · Telegram",
     features: [
       "Серверное создание заказа",
       "Тестовый платёж ЮKassa",
@@ -160,6 +163,7 @@ function setupCaseDialog() {
   const title = document.getElementById("dialog-title");
   const description = document.getElementById("dialog-description");
   const features = document.getElementById("dialog-features");
+  const stack = document.getElementById("dialog-stack");
   const note = document.getElementById("dialog-note");
 
   function openCase(caseId) {
@@ -169,6 +173,7 @@ function setupCaseDialog() {
     label.textContent = item.label;
     title.textContent = item.title;
     description.textContent = item.description;
+    stack.textContent = item.stack ? "Стек: " + item.stack : "";
     note.textContent = item.note;
     features.replaceChildren();
 
@@ -265,12 +270,14 @@ function setupEstimate() {
   const price = document.getElementById("estimate-price");
   const days = document.getElementById("estimate-days");
   const details = document.getElementById("estimate-details");
-  const action = document.getElementById("estimate-action");
+  const telegramLink = document.getElementById("estimate-telegram");
+  const copyButton = document.getElementById("estimate-copy");
   const status = document.getElementById("copy-status");
   const telegramUser = cleanTelegramUser();
 
   function render() {
     const estimate = getEstimate();
+    const message = makeEstimateMessage(estimate);
 
     price.textContent = formatMoney(estimate.total);
     days.textContent = formatDays(estimate.days);
@@ -284,26 +291,23 @@ function setupEstimate() {
       details.append(item);
     });
 
-    action.textContent = telegramUser
-      ? "Обсудить в Telegram"
-      : "Скопировать расчёт";
+    if (telegramUser) {
+      telegramLink.href = `https://t.me/${telegramUser}?text=${encodeURIComponent(message)}`;
+      telegramLink.target = "_blank";
+      telegramLink.rel = "noopener noreferrer";
+    } else {
+      telegramLink.href = "#contact";
+      telegramLink.removeAttribute("target");
+      telegramLink.removeAttribute("rel");
+    }
   }
 
   form.addEventListener("change", render);
 
-  action.addEventListener("click", async () => {
-    const estimate = getEstimate();
-    const message = makeEstimateMessage(estimate);
-
-    if (telegramUser) {
-      const url = `https://t.me/${telegramUser}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank", "noopener,noreferrer");
-      return;
-    }
-
+  copyButton.addEventListener("click", async () => {
     try {
-      await copyText(message);
-      status.textContent = "Расчёт скопирован";
+      await copyText(makeEstimateMessage(getEstimate()));
+      status.textContent = "Расчёт скопирован. Можно вставить в Telegram.";
     } catch {
       status.textContent = "Не удалось скопировать. Выделите расчёт вручную.";
     }
@@ -324,7 +328,7 @@ function setupTelegramContact() {
   link.rel = "noopener noreferrer";
   link.textContent = "Написать в Telegram";
   copy.textContent =
-    "Напишите в Telegram. Я уточню задачу, предложу подход и подготовлю понятную смету.";
+    "Напишите в Telegram. Я уточню задачу, скажу, что смогу сделать сама, и пришлю понятную смету.";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
