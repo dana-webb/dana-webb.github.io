@@ -524,8 +524,8 @@
             </div>
             <div class="flex flex-col justify-end gap-5 lg:items-end">
               <p class="max-w-md text-base leading-relaxed text-black/65 lg:text-right">
-                Три рабочих концепта можно открыть прямо сейчас. Это не чужие
-                клиентские кейсы — моя сборка: лендинг, каталог и магазин с корзиной.
+                Четыре рабочих концепта можно открыть прямо сейчас. Это не чужие
+                клиентские кейсы — моя сборка: лендинг, каталог, магазин и демо-касса.
               </p>
               <div class="flex flex-wrap gap-3 lg:justify-end">
                 <a
@@ -545,6 +545,12 @@
                   class="inline-flex min-h-11 items-center border border-black/30 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-bone"
                 >
                   Открыть магазин
+                </a>
+                <a
+                  href="demo-pay.html"
+                  class="inline-flex min-h-11 items-center border border-black/30 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-bone"
+                >
+                  Открыть кассу
                 </a>
               </div>
             </div>
@@ -726,7 +732,11 @@
             </article>
 
             <article class="case-card reveal grid gap-6 lg:grid-cols-[1.45fr_0.55fr] lg:gap-10">
-              <div class="case-visual-inner pay-preview min-h-[430px] p-5 sm:min-h-[540px] sm:p-8">
+              <a
+                href="demo-pay.html"
+                class="case-visual-inner pay-preview block min-h-[430px] p-5 sm:min-h-[540px] sm:p-8"
+                aria-label="Открыть магазин с демо-оплатой"
+              >
                 <div class="flex items-center justify-between border-b border-black/25 pb-4">
                   <span class="font-mono text-[10px] uppercase tracking-[0.24em]">Secure checkout</span>
                   <span class="font-editorial text-2xl italic">04</span>
@@ -750,7 +760,7 @@
                     test mode · yookassa
                   </p>
                 </div>
-              </div>
+              </a>
 
               <div class="flex flex-col justify-between border-t border-black/25 py-5 lg:border-t-0 lg:py-0">
                 <div>
@@ -767,16 +777,25 @@
                     HTML5 · CSS3 · JavaScript · Flask · ЮKassa API
                   </p>
                 </div>
-                <button
-                  type="button"
-                  class="case-open mt-10 flex min-h-12 items-center justify-between border-b border-black py-3 text-left text-xs font-semibold uppercase tracking-[0.18em] transition hover:text-oxblood"
-                  data-case="payment"
-                  aria-haspopup="dialog"
-                  aria-controls="case-dialog"
-                >
-                  <span>Состав проекта</span>
-                  <span aria-hidden="true">↗</span>
-                </button>
+                <div class="mt-10 grid gap-3">
+                  <a
+                    href="demo-pay.html"
+                    class="flex min-h-12 items-center justify-between border border-black bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-bone transition hover:bg-oxblood"
+                  >
+                    <span>Открыть сайт</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <button
+                    type="button"
+                    class="case-open flex min-h-12 items-center justify-between border-b border-black py-3 text-left text-xs font-semibold uppercase tracking-[0.18em] transition hover:text-oxblood"
+                    data-case="payment"
+                    aria-haspopup="dialog"
+                    aria-controls="case-dialog"
+                  >
+                    <span>Состав проекта</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
               </div>
             </article>
           </div>

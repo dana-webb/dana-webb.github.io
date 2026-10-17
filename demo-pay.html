@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Сияние — магазин с демо-оплатой</title>
+    <link rel="stylesheet" href="demo-pay.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#top" id="nav-shop">Сияние</a>
+      <p class="logo-note">Магазин · демо-касса</p>
+      <nav class="pay-nav">
+        <button type="button" class="nav-link" id="nav-admin">Заказы</button>
+        <button type="button" class="cart-btn" id="cart-open" aria-controls="cart-modal">
+          Корзина
+          <span id="cart-badge" class="cart-badge" hidden>0</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section id="view-shop">
+        <section class="hero">
+          <p class="eyebrow">Салон красоты · тестовая касса</p>
+          <h1>Заказ, оплата и статусы — как в магазине с ЮKassa</h1>
+          <p class="lead">
+            Соберите корзину и перейдите к оплате. Деньги с карты не списываются:
+            вы сами отмечаете «оплачено» или «отменить». Боевая ЮKassa работает
+            так же, но уже на сервере Flask.
+          </p>
+        </section>
+
+        <section class="toolbar" aria-label="Поиск и категории">
+          <label class="search">
+            <span class="visually-hidden">Поиск по магазину</span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Например: шампунь или сертификат"
+              autocomplete="off"
+            />
+          </label>
+          <div id="filters" class="filters" role="group" aria-label="Категории"></div>
+        </section>
+
+        <p id="catalog-meta" class="catalog-meta">Все товары</p>
+        <section id="catalog" class="catalog" aria-live="polite"></section>
+      </section>
+
+      <section id="view-pay" class="sheet-page" hidden>
+        <div class="sheet">
+          <p class="eyebrow">Демо-касса · деньги не списываются</p>
+          <h1 id="pay-title">Заказ</h1>
+          <p id="pay-lead" class="lead"></p>
+          <ul id="pay-list" class="pay-list"></ul>
+          <div id="pay-actions" class="pay-actions">
+            <button type="button" class="primary-btn" id="pay-confirm">Оплатить (демо)</button>
+            <button type="button" class="danger-btn" id="pay-cancel">Отменить заказ</button>
+          </div>
+          <p class="hint">В боевом магазине эта кнопка откроет виджет ЮKassa.</p>
+          <p><a class="ghost-link" href="#top" id="pay-back">Вернуться в магазин</a></p>
+        </div>
+      </section>
+
+      <section id="view-result" class="sheet-page" hidden>
+        <div class="sheet">
+          <p class="eyebrow">Сияние</p>
+          <h1 id="result-title">Заказ обработан</h1>
+          <p id="result-lead" class="lead"></p>
+          <p id="result-total" class="price-lg"></p>
+          <p><a class="ghost-link" href="#top" id="result-back">Вернуться в магазин</a></p>
+        </div>
+      </section>
+
+      <section id="view-admin" class="sheet-page" hidden>
+        <div class="sheet wide">
+          <p class="eyebrow">Админка</p>
+          <h1>Заказы</h1>
+          <form id="admin-login" class="admin-login">
+            <p class="lead">Пароль демо: <code>demo</code>. В боевом проекте он не светится на странице.</p>
+            <label for="admin-password">Пароль</label>
+            <input id="admin-password" type="password" autocomplete="current-password" />
+            <button type="submit" class="primary-btn">Войти</button>
+            <p id="admin-error" class="hint" hidden>Неверный пароль.</p>
+          </form>
+          <div id="admin-table" hidden>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>№</th>
+                    <th>Когда</th>
+                    <th>Клиент</th>
+                    <th>Состав</th>
+                    <th>Сумма</th>
+                    <th>Статус</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-rows"></tbody>
+              </table>
+            </div>
+            <p id="admin-empty" class="lead" hidden>Заказов пока нет. Оформите один с витрины.</p>
+            <button type="button" class="danger-btn" id="admin-logout">Выйти</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Сияние · улица Примерная, 10 · ежедневно 10:00–21:00</p>
+      <p><a href="index.html">← Вернуться в портфолио</a></p>
+    </footer>
+
+    <dialog id="product-modal" class="modal">
+      <div class="modal-inner">
+        <button type="button" class="modal-close" data-close="product-modal" aria-label="Закрыть">×</button>
+        <div id="modal-preview" class="modal-preview" aria-hidden="true"></div>
+        <div class="modal-body">
+          <p id="modal-category" class="eyebrow"></p>
+          <h2 id="modal-title"></h2>
+          <p id="modal-volume" class="volume"></p>
+          <p id="modal-desc" class="modal-desc"></p>
+          <p id="modal-price" class="price-lg"></p>
+          <button type="button" class="primary-btn" id="add-from-modal">Добавить в корзину</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="cart-modal" class="modal cart-modal">
+      <div class="cart-panel">
+        <button type="button" class="modal-close" data-close="cart-modal" aria-label="Закрыть">×</button>
+        <h2>Корзина</h2>
+        <div id="cart-empty" class="empty">Корзина пустая. Вернитесь в каталог и добавьте средство.</div>
+        <div id="cart-filled" hidden>
+          <ul id="cart-lines" class="cart-lines"></ul>
+          <p class="cart-total">Итого <span id="cart-total">0 ₽</span></p>
+
+          <form id="checkout-form" class="checkout">
+            <h3>Оформление заказа</h3>
+            <label for="order-name">Имя</label>
+            <input id="order-name" name="name" type="text" required minlength="2" maxlength="80" />
+
+            <label for="order-phone">Телефон</label>
+            <input
+              id="order-phone"
+              name="phone"
+              type="tel"
+              required
+              minlength="6"
+              maxlength="30"
+              placeholder="+7 900 000-00-00"
+            />
+
+            <fieldset class="delivery">
+              <legend>Получение</legend>
+              <label>
+                <input type="radio" name="delivery" value="pickup" checked />
+                Забрать в салоне · 0 ₽
+              </label>
+              <label>
+                <input type="radio" name="delivery" value="courier" />
+                Курьер по городу · 350 ₽
+              </label>
+            </fieldset>
+
+            <div id="address-wrap" hidden>
+              <label for="order-address">Адрес доставки</label>
+              <input id="order-address" name="address" type="text" maxlength="200" placeholder="Улица, дом, квартира" />
+            </div>
+
+            <label for="order-comment">Комментарий <span class="optional">необязательно</span></label>
+            <textarea id="order-comment" name="comment" rows="2" maxlength="300" placeholder="Позвонить за час"></textarea>
+
+            <button type="submit" class="primary-btn">Перейти к оплате</button>
+            <p class="hint">Дальше откроется демо-касса. Карта не списывается.</p>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="demo-pay.js"></script>
+  </body>
+</html>
