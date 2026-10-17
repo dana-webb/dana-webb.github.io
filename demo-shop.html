@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Сияние — магазин ухода</title>
+    <link rel="stylesheet" href="demo-shop.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#top">Сияние</a>
+      <p class="logo-note">Магазин ухода</p>
+      <button type="button" class="cart-btn" id="cart-open" aria-controls="cart-modal">
+        Корзина
+        <span id="cart-badge" class="cart-badge" hidden>0</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Салон красоты · магазин</p>
+        <h1>Те же средства, что в зале — с корзиной и заказом</h1>
+        <p class="lead">
+          Добавьте позиции в корзину, измените количество и оформите заказ.
+          Оплата картой здесь не подключена: способ «оплата при получении».
+        </p>
+      </section>
+
+      <section class="toolbar" aria-label="Поиск и категории">
+        <label class="search">
+          <span class="visually-hidden">Поиск по магазину</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Например: шампунь или сертификат"
+            autocomplete="off"
+          />
+        </label>
+        <div id="filters" class="filters" role="group" aria-label="Категории"></div>
+      </section>
+
+      <p id="catalog-meta" class="catalog-meta">Все товары</p>
+      <section id="catalog" class="catalog" aria-live="polite"></section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Сияние · улица Примерная, 10 · ежедневно 10:00–21:00</p>
+      <p><a href="index.html">← Вернуться в портфолио</a></p>
+    </footer>
+
+    <!-- Карточка товара: описание + кнопка «в корзину» -->
+    <dialog id="product-modal" class="modal">
+      <div class="modal-inner">
+        <button type="button" class="modal-close" data-close="product-modal" aria-label="Закрыть">×</button>
+        <div id="modal-preview" class="modal-preview" aria-hidden="true"></div>
+        <div class="modal-body">
+          <p id="modal-category" class="eyebrow"></p>
+          <h2 id="modal-title"></h2>
+          <p id="modal-volume" class="volume"></p>
+          <p id="modal-desc" class="modal-desc"></p>
+          <p id="modal-price" class="price-lg"></p>
+          <button type="button" class="primary-btn" id="add-from-modal">Добавить в корзину</button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Корзина + оформление заказа в одном окне -->
+    <dialog id="cart-modal" class="modal cart-modal">
+      <div class="cart-panel">
+        <button type="button" class="modal-close" data-close="cart-modal" aria-label="Закрыть">×</button>
+        <h2>Корзина</h2>
+        <div id="cart-empty" class="empty">Корзина пустая. Вернитесь в каталог и добавьте средство.</div>
+        <div id="cart-filled" hidden>
+          <ul id="cart-lines" class="cart-lines"></ul>
+          <p class="cart-total">Итого <span id="cart-total">0 ₽</span></p>
+
+          <form id="checkout-form" class="checkout">
+            <h3>Оформление заказа</h3>
+            <label for="order-name">Имя</label>
+            <input id="order-name" name="name" type="text" required minlength="2" maxlength="80" />
+
+            <label for="order-phone">Телефон</label>
+            <input
+              id="order-phone"
+              name="phone"
+              type="tel"
+              required
+              minlength="6"
+              maxlength="30"
+              placeholder="+7 900 000-00-00"
+            />
+
+            <fieldset class="delivery">
+              <legend>Получение</legend>
+              <label>
+                <input type="radio" name="delivery" value="pickup" checked />
+                Забрать в салоне · 0 ₽
+              </label>
+              <label>
+                <input type="radio" name="delivery" value="courier" />
+                Курьер по городу · 350 ₽
+              </label>
+            </fieldset>
+
+            <div id="address-wrap" hidden>
+              <label for="order-address">Адрес доставки</label>
+              <input id="order-address" name="address" type="text" maxlength="200" placeholder="Улица, дом, квартира" />
+            </div>
+
+            <label for="order-comment">Комментарий <span class="optional">необязательно</span></label>
+            <textarea id="order-comment" name="comment" rows="2" maxlength="300" placeholder="Позвонить за час"></textarea>
+
+            <button type="submit" class="primary-btn">Оформить заказ</button>
+            <p class="hint">Оплата при получении. Карту на сайте подключим позже.</p>
+          </form>
+        </div>
+
+        <div id="order-success" class="success" hidden>
+          <h3>Заказ принят</h3>
+          <p id="order-success-text"></p>
+          <a id="order-telegram" class="ghost-link" href="https://t.me/dana_web" target="_blank" rel="noopener noreferrer">
+            Отправить этот заказ в Telegram
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="demo-shop.js"></script>
+  </body>
+</html>

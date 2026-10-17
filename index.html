@@ -250,6 +250,13 @@
         border: 1px solid rgba(23, 23, 23, 0.2);
       }
 
+      .tiho-preview {
+        color: #ece7dc;
+        background:
+          radial-gradient(circle at 70% 28%, rgba(236, 231, 220, 0.14), transparent 36%),
+          #141517;
+      }
+
       /* Нативный dialog сохраняет управление с клавиатуры и фокусом. */
       dialog {
         width: min(720px, calc(100% - 32px));
@@ -433,27 +440,51 @@
         </div>
       </div>
 
-      <!-- Кейсы честно обозначены как учебные и открываются в подробном dialog. -->
+      <!-- Живые концепты открываются по ссылке — клиент кликает и смотрит сайт. -->
       <section id="work" class="scroll-mt-20 bg-bone px-4 py-20 text-ink sm:px-8 lg:py-28">
         <div class="mx-auto max-w-[1360px]">
           <div class="reveal grid gap-8 border-b border-black/25 pb-10 lg:grid-cols-[1fr_1fr]">
             <div>
               <p class="font-mono text-[10px] uppercase tracking-[0.28em] text-black/55">01 / selected work</p>
               <h2 class="mt-5 max-w-3xl text-balance text-5xl font-bold uppercase leading-[0.9] tracking-[-0.055em] sm:text-7xl lg:text-8xl">
-                Не обещания.<br />Рабочие концепты.
+                Не обещания.<br />Живые сайты.
               </h2>
             </div>
-            <div class="flex items-end lg:justify-end">
-              <p class="max-w-md text-base leading-relaxed text-black/65">
-                Три инженерных концепта на реальных сценариях: каталог, корзина
-                и тестовая оплата. Показываю, что уже умею собрать до первого клиентского запуска.
+            <div class="flex flex-col justify-end gap-5 lg:items-end">
+              <p class="max-w-md text-base leading-relaxed text-black/65 lg:text-right">
+                Три рабочих концепта можно открыть прямо сейчас. Это не чужие
+                клиентские кейсы — моя сборка: лендинг, каталог и магазин с корзиной.
               </p>
+              <div class="flex flex-wrap gap-3 lg:justify-end">
+                <a
+                  href="demo-tiho.html"
+                  class="inline-flex min-h-11 items-center border border-black/30 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-bone"
+                >
+                  Открыть TIHO
+                </a>
+                <a
+                  href="demo-siyanie.html"
+                  class="inline-flex min-h-11 items-center border border-black/30 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-bone"
+                >
+                  Открыть каталог
+                </a>
+                <a
+                  href="demo-shop.html"
+                  class="inline-flex min-h-11 items-center border border-black/30 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-bone"
+                >
+                  Открыть магазин
+                </a>
+              </div>
             </div>
           </div>
 
           <div class="mt-12 space-y-16 sm:mt-16 sm:space-y-24">
             <article class="case-card reveal grid gap-6 lg:grid-cols-[1.45fr_0.55fr] lg:gap-10">
-              <div class="case-visual-inner catalog-preview min-h-[420px] p-4 sm:min-h-[520px] sm:p-7">
+              <a
+                href="demo-siyanie.html"
+                class="case-visual-inner catalog-preview min-h-[420px] block p-4 sm:min-h-[520px] sm:p-7"
+                aria-label="Открыть каталог Сияние"
+              >
                 <div class="flex items-center justify-between border-b border-black/25 pb-4">
                   <span class="font-editorial text-3xl italic sm:text-4xl">Siyanie</span>
                   <span class="font-mono text-[9px] uppercase tracking-[0.2em]">care objects / catalog</span>
@@ -472,7 +503,7 @@
                   <span>Body balm<br />2 400 ₽</span>
                   <span>Face oil<br />3 200 ₽</span>
                 </div>
-              </div>
+              </a>
 
               <div class="flex flex-col justify-between border-t border-black/25 py-5 lg:border-t-0 lg:py-0">
                 <div>
@@ -489,14 +520,23 @@
                     HTML5 · CSS3 · JavaScript
                   </p>
                 </div>
-                <button
-                  type="button"
-                  class="case-open mt-10 flex min-h-12 items-center justify-between border-b border-black py-3 text-left text-xs font-semibold uppercase tracking-[0.18em]"
-                  data-case="catalog"
-                >
-                  <span>Состав проекта</span>
-                  <span aria-hidden="true">↗</span>
-                </button>
+                <div class="mt-10 grid gap-3">
+                  <a
+                    href="demo-siyanie.html"
+                    class="flex min-h-12 items-center justify-between border border-black bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-bone transition hover:bg-oxblood"
+                  >
+                    <span>Открыть сайт</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <button
+                    type="button"
+                    class="case-open flex min-h-12 items-center justify-between border-b border-black py-3 text-left text-xs font-semibold uppercase tracking-[0.18em]"
+                    data-case="catalog"
+                  >
+                    <span>Состав проекта</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
               </div>
             </article>
 
@@ -516,20 +556,33 @@
                     HTML5 · CSS3 · JavaScript
                   </p>
                 </div>
-                <button
-                  type="button"
-                  class="case-open mt-10 flex min-h-12 items-center justify-between border-b border-black py-3 text-left text-xs font-semibold uppercase tracking-[0.18em]"
-                  data-case="shop"
-                >
-                  <span>Состав проекта</span>
-                  <span aria-hidden="true">↗</span>
-                </button>
+                <div class="mt-10 grid gap-3">
+                  <a
+                    href="demo-shop.html"
+                    class="flex min-h-12 items-center justify-between border border-black bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-bone transition hover:bg-oxblood"
+                  >
+                    <span>Открыть сайт</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <button
+                    type="button"
+                    class="case-open flex min-h-12 items-center justify-between border-b border-black py-3 text-left text-xs font-semibold uppercase tracking-[0.18em]"
+                    data-case="shop"
+                  >
+                    <span>Состав проекта</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
               </div>
 
-              <div class="case-visual-inner shop-preview relative order-1 min-h-[440px] overflow-hidden p-5 sm:min-h-[560px] sm:p-8 lg:order-2">
+              <a
+                href="demo-shop.html"
+                class="case-visual-inner shop-preview relative order-1 block min-h-[440px] overflow-hidden p-5 sm:min-h-[560px] sm:p-8 lg:order-2"
+                aria-label="Открыть магазин Сияние"
+              >
                 <div class="relative z-10 flex items-center justify-between border-b border-white/25 pb-4">
                   <span class="text-xl font-bold uppercase tracking-[-0.04em]">Noir Market</span>
-                  <span class="font-mono text-[9px] uppercase tracking-[0.22em]">Cart / 03</span>
+                  <span class="font-mono text-[9px] uppercase tracking-[0.22em]">Cart / 02</span>
                 </div>
                 <div class="shop-object"></div>
                 <p class="absolute bottom-8 left-6 z-10 max-w-[220px] font-editorial text-5xl italic leading-[0.82] sm:left-9 sm:text-7xl">
@@ -538,6 +591,59 @@
                 <span class="absolute bottom-8 right-6 z-10 border border-white/30 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.18em] sm:right-9">
                   add to cart
                 </span>
+              </a>
+            </article>
+
+            <article class="case-card reveal grid gap-6 lg:grid-cols-[1.45fr_0.55fr] lg:gap-10">
+              <a
+                href="demo-tiho.html"
+                class="case-visual-inner tiho-preview relative block min-h-[430px] overflow-hidden p-5 sm:min-h-[540px] sm:p-8"
+                aria-label="Открыть сайт TIHO"
+              >
+                <div class="flex items-center justify-between border-b border-white/20 pb-4">
+                  <span class="font-editorial text-3xl italic tracking-[0.28em]">TIHO</span>
+                  <span class="font-mono text-[9px] uppercase tracking-[0.22em] text-white/50">spa house / 03</span>
+                </div>
+                <p class="mt-16 max-w-sm font-editorial text-6xl italic leading-[0.82] sm:text-7xl">
+                  где<br />затихают<br />мысли
+                </p>
+                <p class="absolute bottom-8 left-6 font-mono text-[9px] uppercase tracking-[0.22em] text-white/50">
+                  главная · программы · бронь
+                </p>
+              </a>
+
+              <div class="flex flex-col justify-between border-t border-black/25 py-5 lg:border-t-0 lg:py-0">
+                <div>
+                  <div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-black/50">
+                    <span>Инженерный концепт</span>
+                    <span>03</span>
+                  </div>
+                  <h3 class="mt-7 text-4xl font-semibold uppercase tracking-[-0.04em]">Сайт пространства TIHO</h3>
+                  <p class="mt-5 leading-relaxed text-black/65">
+                    Многостраничник: атмосфера, программы, о пространстве
+                    и бронь визита. Показывает, как выглядит лендинг с характером.
+                  </p>
+                  <p class="mt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-black/45">
+                    HTML5 · CSS3 · JavaScript
+                  </p>
+                </div>
+                <div class="mt-10 grid gap-3">
+                  <a
+                    href="demo-tiho.html"
+                    class="flex min-h-12 items-center justify-between border border-black bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-bone transition hover:bg-oxblood"
+                  >
+                    <span>Открыть сайт</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <button
+                    type="button"
+                    class="case-open flex min-h-12 items-center justify-between border-b border-black py-3 text-left text-xs font-semibold uppercase tracking-[0.18em]"
+                    data-case="tiho"
+                  >
+                    <span>Состав проекта</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
               </div>
             </article>
 
@@ -545,7 +651,7 @@
               <div class="case-visual-inner pay-preview min-h-[430px] p-5 sm:min-h-[540px] sm:p-8">
                 <div class="flex items-center justify-between border-b border-black/25 pb-4">
                   <span class="font-mono text-[10px] uppercase tracking-[0.24em]">Secure checkout</span>
-                  <span class="font-editorial text-2xl italic">03</span>
+                  <span class="font-editorial text-2xl italic">04</span>
                 </div>
                 <div class="mx-auto mt-8 max-w-md">
                   <div class="pay-panel p-5 sm:p-7">
@@ -572,7 +678,7 @@
                 <div>
                   <div class="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-black/50">
                     <span>Инженерный концепт</span>
-                    <span>03</span>
+                    <span>04</span>
                   </div>
                   <h3 class="mt-7 text-4xl font-semibold uppercase tracking-[-0.04em]">Магазин + ЮKassa</h3>
                   <p class="mt-5 leading-relaxed text-black/65">
@@ -880,6 +986,13 @@
         <h3 class="mt-8 font-mono text-[10px] uppercase tracking-[0.24em] text-black/50">Реализовано</h3>
         <ul id="dialog-features" class="mt-4 divide-y divide-black/15 border-y border-black/15"></ul>
         <p id="dialog-note" class="mt-6 border-l-2 border-oxblood pl-4 text-sm leading-relaxed text-black/60"></p>
+        <a
+          id="dialog-demo"
+          href="#"
+          class="mt-7 hidden min-h-12 items-center justify-center bg-ink px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-bone"
+        >
+          Открыть живой сайт
+        </a>
       </div>
     </dialog>
 

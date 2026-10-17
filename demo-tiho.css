@@ -1,0 +1,35 @@
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+[data-magnetic] {
+  display: inline-flex;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.photo {
+  filter: contrast(1.06) saturate(0.92);
+}
+
+.choice.is-on,
+.slot.is-on {
+  border-color: rgba(234, 229, 217, 0.7);
+  background: rgba(234, 229, 217, 0.12);
+}
+
+.slot.is-off {
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+::selection {
+  background: rgba(234, 229, 217, 0.22);
+  color: #eae5d9;
+}

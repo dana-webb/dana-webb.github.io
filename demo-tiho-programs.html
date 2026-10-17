@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Программы — TIHO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { slatewet: "#161719", linen: "#EAE5D9" },
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', "Georgia", "serif"],
+              sans: ['"Manrope"', "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="demo-tiho.css" />
+  </head>
+  <body class="bg-[#161719] font-sans text-[#EAE5D9] antialiased">
+    <div class="grain" aria-hidden="true"></div>
+
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-[#EAE5D9]/10 bg-[#161719]/35 backdrop-blur-md"
+    >
+      <div
+        class="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8"
+      >
+        <nav
+          class="hidden items-center gap-6 text-[11px] uppercase tracking-[0.22em] text-[#EAE5D9]/65 md:flex"
+        >
+          <a class="hover:text-[#EAE5D9]" href="demo-tiho.html">Главная</a>
+          <a class="text-[#EAE5D9]" href="demo-tiho-programs.html" aria-current="page">Программы</a>
+          <a class="hover:text-[#EAE5D9]" href="demo-tiho-about.html">О нас</a>
+        </nav>
+        <a
+          href="demo-tiho.html"
+          class="absolute left-1/2 -translate-x-1/2 font-serif text-2xl italic tracking-[0.32em]"
+          >TIHO</a>
+        >
+        <a
+          href="demo-tiho-booking.html"
+          class="ml-auto border-b border-[#EAE5D9]/50 pb-0.5 text-[11px] uppercase tracking-[0.16em] hover:border-[#EAE5D9]"
+          >Забронировать визит</a
+        >
+      </div>
+      <nav
+        class="flex justify-center gap-5 pb-3 text-[10px] uppercase tracking-[0.2em] text-[#EAE5D9]/60 md:hidden"
+      >
+        <a href="demo-tiho.html">Главная</a>
+        <a class="text-[#EAE5D9]" href="demo-tiho-programs.html">Программы</a>
+        <a href="demo-tiho-about.html">О нас</a>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-5 pb-24 pt-36 md:px-8">
+      <p class="text-[11px] uppercase tracking-[0.32em] text-[#EAE5D9]/45">Каталог</p>
+      <h1 class="mt-4 max-w-[14ch] font-serif text-5xl leading-tight md:text-7xl">
+        Ритуалы, в которые можно войти целиком
+      </h1>
+
+      <section class="mt-20">
+        <h2 class="font-serif text-3xl italic">Ритуалы для тела</h2>
+        <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80" alt="Живая морская вода" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Дыхание океана</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">90 мин · 8 500 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Солевое обёртывание и длинные волны масла. Тело тяжелеет, шум уходит.</p>
+              <a href="demo-tiho-booking.html?program=ocean" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80" alt="Тёмный кедровый лес" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Магия кедра</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">120 мин · 11 000 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Кедровое масло, тёплые камни и глубокая работа со спиной.</p>
+              <a href="demo-tiho-booking.html?program=cedar" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80" alt="Натуральный лён на кровати" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Тёплый лён</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">75 мин · 7 200 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Масляный массаж под нагретыми льняными тканями.</p>
+              <a href="demo-tiho-booking.html?program=linen" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1470259078422-826894b933aa?auto=format&fit=crop&w=1200&q=80" alt="Тёплые полотна и камни спа" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Камни и тишина</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">100 мин · 9 800 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Базальт, паузы и давление. Разговоры не нужны.</p>
+              <a href="demo-tiho-booking.html?program=stones" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1200&q=80" alt="Сырая глина и керамика" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Глина и масло</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">80 мин · 7 900 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Тёплая глина на спине, затем длинные линии масла.</p>
+              <a href="demo-tiho-booking.html?program=clay" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Солёный берег и вода" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Соляной берег</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">90 мин · 8 700 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Скраб морской соли и мягкое восстановление кожи.</p>
+              <a href="demo-tiho-booking.html?program=salt" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-24">
+        <h2 class="font-serif text-3xl italic">Уход за лицом</h2>
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=80" alt="Уход за лицом в тёплом свете" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Скульптор скул и сияние</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">60 мин · 6 000 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Буккальный контур и спокойный тон. Лицо становится собраннее.</p>
+              <a href="demo-tiho-booking.html?program=sculpt" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=80" alt="Молочная текстура ухода" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Лунное молоко</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">50 мин · 5 400 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Молочные ферменты и мягкий блеск без плёнки.</p>
+              <a href="demo-tiho-booking.html?program=moon" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1200&q=80" alt="Спокойный уход за кожей" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Глубокое дыхание кожи</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">70 мин · 6 800 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Кислотный уход без агрессии. Кожа снова дышит.</p>
+              <a href="demo-tiho-booking.html?program=breath" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80" alt="Янтарное масло на руках" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Тихий контур</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">45 мин · 4 900 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Короткий ритуал для линии челюсти и взгляда.</p>
+              <a href="demo-tiho-booking.html?program=contour" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-24">
+        <h2 class="font-serif text-3xl italic">Антистресс-программы</h2>
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5 md:col-span-2 md:grid md:grid-cols-2">
+            <img class="photo h-64 w-full object-cover md:h-full" src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=1400&q=80" alt="Медитативная чаша и тишина" />
+            <div class="p-8">
+              <h3 class="font-serif text-3xl">Полное погружение</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">150 мин · 15 000 ₽ · поющие чаши</p>
+              <p class="mt-4 max-w-md text-sm leading-relaxed text-[#EAE5D9]/70">Массаж, звук и тёмная комната. Самый длинный выход из шума.</p>
+              <a href="demo-tiho-booking.html?program=immerse" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1478144592103-25e218a04891?auto=format&fit=crop&w=1200&q=80" alt="Мягкий свет свечей" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Тишина комнаты</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">90 мин · 9 200 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Дыхание, тёплые руки и почти полный мрак.</p>
+              <a href="demo-tiho-booking.html?program=silence" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5">
+            <img class="photo h-56 w-full object-cover" src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80" alt="Рябь на воде" />
+            <div class="p-6">
+              <h3 class="font-serif text-2xl">Звук и вода</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">120 мин · 12 500 ₽</p>
+              <p class="mt-3 text-sm leading-relaxed text-[#EAE5D9]/70">Чаши, капли на кожу и очень медленный темп.</p>
+              <a href="demo-tiho-booking.html?program=sound" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5 md:col-span-2 md:grid md:grid-cols-2">
+            <img class="photo h-64 w-full object-cover md:h-full" src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?auto=format&fit=crop&w=1400&q=80" alt="Пампасная трава в тёплом свете" />
+            <div class="p-8">
+              <h3 class="font-serif text-3xl">Ночной ритуал</h3>
+              <p class="mt-2 text-sm text-[#EAE5D9]/60">180 мин · 18 000 ₽</p>
+              <p class="mt-4 max-w-md text-sm leading-relaxed text-[#EAE5D9]/70">Вечерний визит: тело, лицо и звук до полного затихания.</p>
+              <a href="demo-tiho-booking.html?program=night" class="mt-6 inline-block border-b border-[#EAE5D9]/40 pb-1 text-sm">Выбрать</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-12 text-sm text-[#EAE5D9]/45 md:flex-row md:justify-between md:px-8"
+    >
+      <p>TIHO · камерный спа-дом · <a class="hover:text-[#EAE5D9]" href="index.html">← Портфолио</a></p>
+      <a href="demo-tiho-booking.html">Забронировать визит</a>
+      <a href="demo-tiho-about.html">О мастерах</a>
+    </footer>
+
+    <script src="demo-tiho.js"></script>
+  </body>
+</html>

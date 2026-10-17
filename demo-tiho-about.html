@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>О нас — TIHO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { slatewet: "#161719", linen: "#EAE5D9" },
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', "Georgia", "serif"],
+              sans: ['"Manrope"', "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="demo-tiho.css" />
+  </head>
+  <body class="bg-[#161719] font-sans text-[#EAE5D9] antialiased">
+    <div class="grain" aria-hidden="true"></div>
+
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-[#EAE5D9]/10 bg-[#161719]/35 backdrop-blur-md"
+    >
+      <div
+        class="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8"
+      >
+        <nav
+          class="hidden items-center gap-6 text-[11px] uppercase tracking-[0.22em] text-[#EAE5D9]/65 md:flex"
+        >
+          <a class="hover:text-[#EAE5D9]" href="demo-tiho.html">Главная</a>
+          <a class="hover:text-[#EAE5D9]" href="demo-tiho-programs.html">Программы</a>
+          <a class="text-[#EAE5D9]" href="demo-tiho-about.html" aria-current="page">О нас</a>
+        </nav>
+        <a
+          href="demo-tiho.html"
+          class="absolute left-1/2 -translate-x-1/2 font-serif text-2xl italic tracking-[0.32em]"
+          >TIHO</a>
+        >
+        <a
+          href="demo-tiho-booking.html"
+          class="ml-auto border-b border-[#EAE5D9]/50 pb-0.5 text-[11px] uppercase tracking-[0.16em] hover:border-[#EAE5D9]"
+          >Забронировать визит</a
+        >
+      </div>
+      <nav
+        class="flex justify-center gap-5 pb-3 text-[10px] uppercase tracking-[0.2em] text-[#EAE5D9]/60 md:hidden"
+      >
+        <a href="demo-tiho.html">Главная</a>
+        <a href="demo-tiho-programs.html">Программы</a>
+        <a class="text-[#EAE5D9]" href="demo-tiho-about.html">О нас</a>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-5 pb-24 pt-36 md:px-8">
+      <p class="text-[11px] uppercase tracking-[0.32em] text-[#EAE5D9]/45">Мастера и атмосфера</p>
+      <h1 class="mt-4 max-w-[16ch] font-serif text-5xl leading-tight md:text-7xl">
+        Руки, которые не торопят
+      </h1>
+      <p class="mt-8 max-w-xl font-serif text-xl italic text-[#EAE5D9]/70">
+        Три мастера. Одна комната. Мало слов, много внимания к ткани тела.
+      </p>
+
+      <article class="mt-20 grid items-center gap-10 lg:grid-cols-2">
+        <img
+          class="photo h-[420px] w-full rounded-[22px] object-cover"
+          src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1400&q=80"
+          alt="Мастер Анна работает с спиной"
+        />
+        <div>
+          <img
+            class="photo h-20 w-20 rounded-full object-cover"
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80"
+            alt="Портрет мастера Анны"
+          />
+          <h2 class="mt-6 font-serif text-4xl">Мастер Анна</h2>
+          <p class="mt-2 text-sm uppercase tracking-[0.18em] text-[#EAE5D9]/50">
+            Глубокий миофасциальный релиз
+          </p>
+          <p class="mt-6 max-w-md leading-relaxed text-[#EAE5D9]/75">
+            Анна работает медленно и близко к кости. Её ритуалы снимают броню
+            со спины и шеи. Если тело давно держит город — это её комната.
+          </p>
+        </div>
+      </article>
+
+      <article class="mt-24 grid items-center gap-10 lg:grid-cols-2">
+        <div class="lg:order-2">
+          <img
+            class="photo h-[420px] w-full rounded-[22px] object-cover"
+            src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1400&q=80"
+            alt="Мастер Ли за восточным массажем"
+          />
+        </div>
+        <div class="lg:order-1">
+          <img
+            class="photo h-20 w-20 rounded-full object-cover"
+            src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=240&q=80"
+            alt="Портрет мастера Ли"
+          />
+          <h2 class="mt-6 font-serif text-4xl">Мастер Ли</h2>
+          <p class="mt-2 text-sm uppercase tracking-[0.18em] text-[#EAE5D9]/50">
+            Эксперт по восточным техникам
+          </p>
+          <p class="mt-6 max-w-md leading-relaxed text-[#EAE5D9]/75">
+            Ли соединяет тепло камней, масло и точечную работу. В её сессии
+            много пауз: тело успевает ответить, прежде чем рука идёт дальше.
+          </p>
+        </div>
+      </article>
+
+      <article class="mt-24 grid items-center gap-10 lg:grid-cols-2">
+        <img
+          class="photo h-[420px] w-full rounded-[22px] object-cover"
+          src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1400&q=80"
+          alt="Мастер Мария за уходом лица"
+        />
+        <div>
+          <img
+            class="photo h-20 w-20 rounded-full object-cover"
+            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=240&q=80"
+            alt="Портрет мастера Марии"
+          />
+          <h2 class="mt-6 font-serif text-4xl">Мастер Мария</h2>
+          <p class="mt-2 text-sm uppercase tracking-[0.18em] text-[#EAE5D9]/50">
+            Лицо, скулы и тихий контур
+          </p>
+          <p class="mt-6 max-w-md leading-relaxed text-[#EAE5D9]/75">
+            Мария почти не говорит во время ухода. Её руки читают отёк,
+            зажим и усталость взгляда. После неё лицо выглядит отдохнувшим,
+            а не «сделанным».
+          </p>
+        </div>
+      </article>
+
+      <section class="mt-28">
+        <h2 class="font-serif text-4xl italic">Комната</h2>
+        <p class="mt-4 max-w-lg text-[#EAE5D9]/65">
+          Льняные шторы, свечи и полумрак. Окна почти всегда прикрыты:
+          свет остаётся тёплым и низким.
+        </p>
+        <div class="mt-10 grid gap-5 md:grid-cols-3">
+          <img
+            class="photo h-72 w-full rounded-[22px] object-cover md:col-span-2 md:h-[420px]"
+            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80"
+            alt="Льняные шторы и мягкий дневной свет"
+          />
+          <img
+            class="photo h-72 w-full rounded-[22px] object-cover"
+            src="https://images.unsplash.com/photo-1478144592103-25e218a04891?auto=format&fit=crop&w=900&q=80"
+            alt="Свечи в полумраке"
+          />
+          <img
+            class="photo h-72 w-full rounded-[22px] object-cover"
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
+            alt="Спа-интерьер в тёплом полумраке"
+          />
+          <img
+            class="photo h-72 w-full rounded-[22px] object-cover md:col-span-2"
+            src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?auto=format&fit=crop&w=1600&q=80"
+            alt="Пампасная трава в тёплом свете"
+          />
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-12 text-sm text-[#EAE5D9]/45 md:flex-row md:justify-between md:px-8"
+    >
+      <p>TIHO · камерный спа-дом · <a class="hover:text-[#EAE5D9]" href="index.html">← Портфолио</a></p>
+      <a href="demo-tiho-programs.html">Выбрать ритуал</a>
+      <a href="demo-tiho-booking.html">Забронировать визит</a>
+    </footer>
+
+    <script src="demo-tiho.js"></script>
+  </body>
+</html>

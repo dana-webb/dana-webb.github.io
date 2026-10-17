@@ -31,6 +31,7 @@ const CASES = {
     description:
       "Концепт каталога для бренда ухода: человек быстро находит категорию, смотрит товар и оставляет заявку без сложной корзины.",
     stack: "HTML5 · CSS3 · JavaScript",
+    demo: "demo-siyanie.html",
     features: [
       "Категории и фильтрация ассортимента",
       "Поиск по названию и описанию",
@@ -47,6 +48,7 @@ const CASES = {
     description:
       "Клиентская часть небольшого магазина: каталог, изменение количества, сохранение корзины и последовательное оформление заказа.",
     stack: "HTML5 · CSS3 · JavaScript",
+    demo: "demo-shop.html",
     features: [
       "Каталог и фильтры",
       "Добавление и удаление товаров",
@@ -56,6 +58,23 @@ const CASES = {
     ],
     note:
       "Концепт показывает интерфейс и логику корзины. Боевой магазин дополнительно требует сервер, базу данных, оплату, чеки и мониторинг.",
+  },
+  tiho: {
+    label: "Инженерный концепт · сайт пространства",
+    title: "TIHO",
+    description:
+      "Многостраничный сайт камерного пространства: главная с атмосферой, программы, страница о доме и форма брони визита.",
+    stack: "HTML5 · CSS3 · JavaScript",
+    demo: "demo-tiho.html",
+    features: [
+      "Несколько связанных страниц",
+      "Главный экран с характером бренда",
+      "Программы и описание пространства",
+      "Форма бронирования визита",
+      "Адаптация для телефона",
+    ],
+    note:
+      "Концепт показывает тон и структуру сайта услуг. Это не чужой коммерческий кейс и не отзыв клиента.",
   },
   payment: {
     label: "Инженерный концепт · сервер и оплата",
@@ -71,7 +90,7 @@ const CASES = {
       "Вход в административную часть",
     ],
     note:
-      "Оплата работает в тестовом режиме. Перед коммерческим запуском необходимы production-хостинг, webhook, резервные копии и полный аудит безопасности.",
+      "Живую оплату нельзя открыть на GitHub Pages: нужен сервер. Показать тестовый сценарий могу на созвоне. Перед коммерческим запуском нужны production-хостинг, webhook и аудит безопасности.",
   },
 };
 
@@ -165,6 +184,7 @@ function setupCaseDialog() {
   const features = document.getElementById("dialog-features");
   const stack = document.getElementById("dialog-stack");
   const note = document.getElementById("dialog-note");
+  const demo = document.getElementById("dialog-demo");
 
   function openCase(caseId) {
     const item = CASES[caseId];
@@ -175,6 +195,17 @@ function setupCaseDialog() {
     description.textContent = item.description;
     stack.textContent = item.stack ? "Стек: " + item.stack : "";
     note.textContent = item.note;
+
+    if (item.demo) {
+      demo.href = item.demo;
+      demo.classList.remove("hidden");
+      demo.classList.add("flex");
+    } else {
+      demo.removeAttribute("href");
+      demo.classList.add("hidden");
+      demo.classList.remove("flex");
+    }
+
     features.replaceChildren();
 
     item.features.forEach((feature, index) => {

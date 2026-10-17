@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Запись — TIHO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { slatewet: "#161719", linen: "#EAE5D9" },
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', "Georgia", "serif"],
+              sans: ['"Manrope"', "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="demo-tiho.css" />
+  </head>
+  <body class="bg-[#161719] font-sans text-[#EAE5D9] antialiased">
+    <div class="grain" aria-hidden="true"></div>
+
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-[#EAE5D9]/10 bg-[#161719]/35 backdrop-blur-md"
+    >
+      <div
+        class="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8"
+      >
+        <nav
+          class="hidden items-center gap-6 text-[11px] uppercase tracking-[0.22em] text-[#EAE5D9]/65 md:flex"
+        >
+          <a class="hover:text-[#EAE5D9]" href="demo-tiho.html">Главная</a>
+          <a class="hover:text-[#EAE5D9]" href="demo-tiho-programs.html">Программы</a>
+          <a class="hover:text-[#EAE5D9]" href="demo-tiho-about.html">О нас</a>
+        </nav>
+        <a
+          href="demo-tiho.html"
+          class="absolute left-1/2 -translate-x-1/2 font-serif text-2xl italic tracking-[0.32em]"
+          >TIHO</a>
+        >
+        <a
+          href="demo-tiho-booking.html"
+          class="ml-auto border-b border-[#EAE5D9] pb-0.5 text-[11px] uppercase tracking-[0.16em]"
+          aria-current="page"
+          >Забронировать визит</a
+        >
+      </div>
+      <nav
+        class="flex justify-center gap-5 pb-3 text-[10px] uppercase tracking-[0.2em] text-[#EAE5D9]/60 md:hidden"
+      >
+        <a href="demo-tiho.html">Главная</a>
+        <a href="demo-tiho-programs.html">Программы</a>
+        <a href="demo-tiho-about.html">О нас</a>
+      </nav>
+    </header>
+
+    <main data-booking class="mx-auto grid max-w-6xl gap-8 px-5 pb-24 pt-36 lg:grid-cols-[1.4fr_0.8fr] md:px-8">
+      <div class="space-y-8">
+        <div>
+          <p class="text-[11px] uppercase tracking-[0.32em] text-[#EAE5D9]/45">Онлайн-запись</p>
+          <h1 class="mt-4 font-serif text-5xl leading-tight md:text-6xl">Соберите визит</h1>
+        </div>
+
+        <section class="rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5 p-6 backdrop-blur-md">
+          <h2 class="font-serif text-2xl">1. Категория и программа</h2>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <button type="button" data-cat="body" class="choice rounded-full border border-[#EAE5D9]/20 px-4 py-2 text-sm">
+              Тело
+            </button>
+            <button type="button" data-cat="face" class="choice rounded-full border border-[#EAE5D9]/20 px-4 py-2 text-sm">
+              Лицо
+            </button>
+            <button type="button" data-cat="calm" class="choice rounded-full border border-[#EAE5D9]/20 px-4 py-2 text-sm">
+              Антистресс
+            </button>
+          </div>
+          <div id="program-list" class="mt-5 grid gap-4"></div>
+        </section>
+
+        <section class="rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5 p-6 backdrop-blur-md">
+          <h2 class="font-serif text-2xl">2. Мастер</h2>
+          <div id="master-list" class="mt-5 grid gap-4"></div>
+        </section>
+
+        <section class="rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5 p-6 backdrop-blur-md">
+          <h2 class="font-serif text-2xl">3. Дата и время</h2>
+          <div id="date-list" class="mt-5 flex gap-3 overflow-x-auto pb-2"></div>
+          <div id="time-list" class="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-5"></div>
+        </section>
+
+        <section class="rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5 p-6 backdrop-blur-md">
+          <h2 class="font-serif text-2xl">4. Как к вам обратиться</h2>
+          <form id="visit-form" class="mt-6 space-y-4">
+            <label class="block">
+              <span class="text-xs uppercase tracking-[0.16em] text-[#EAE5D9]/50">Имя</span>
+              <input
+                required
+                name="name"
+                autocomplete="name"
+                class="mt-2 w-full rounded-xl border border-[#EAE5D9]/15 bg-[#161719]/40 px-4 py-3 outline-none focus:border-[#EAE5D9]/50"
+              />
+            </label>
+            <label class="block">
+              <span class="text-xs uppercase tracking-[0.16em] text-[#EAE5D9]/50">Телефон</span>
+              <input
+                required
+                type="tel"
+                name="phone"
+                autocomplete="tel"
+                placeholder="+7"
+                class="mt-2 w-full rounded-xl border border-[#EAE5D9]/15 bg-[#161719]/40 px-4 py-3 outline-none focus:border-[#EAE5D9]/50"
+              />
+            </label>
+            <label class="block">
+              <span class="text-xs uppercase tracking-[0.16em] text-[#EAE5D9]/50">Telegram</span>
+              <input
+                name="telegram"
+                placeholder="@username"
+                class="mt-2 w-full rounded-xl border border-[#EAE5D9]/15 bg-[#161719]/40 px-4 py-3 outline-none focus:border-[#EAE5D9]/50"
+              />
+            </label>
+            <p class="text-sm leading-relaxed text-[#EAE5D9]/55">
+              Наш ИИ-консьерж вышлет карту парковки и детали визита в ваш Telegram
+            </p>
+            <button
+              type="submit"
+              class="border border-[#EAE5D9]/40 px-8 py-3 text-[11px] uppercase tracking-[0.2em]"
+            >
+              Подтвердить визит
+            </button>
+          </form>
+          <p id="visit-done" hidden class="mt-6 font-serif text-2xl italic">
+            Визит принят. Напишем в Telegram и пришлём карту парковки.
+          </p>
+        </section>
+      </div>
+
+      <aside class="lg:sticky lg:top-28 lg:self-start">
+        <div
+          id="summary"
+          class="rounded-2xl border border-[#EAE5D9]/10 bg-[#EAE5D9]/5 p-6 backdrop-blur-md"
+        ></div>
+        <p class="mt-4 text-sm text-[#EAE5D9]/40">
+          Если передумали, вернитесь в
+          <a class="border-b border-[#EAE5D9]/30" href="demo-tiho-programs.html">каталог</a>.
+        </p>
+      </aside>
+    </main>
+
+    <footer
+      class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-12 text-sm text-[#EAE5D9]/45 md:flex-row md:justify-between md:px-8"
+    >
+      <p>TIHO · камерный спа-дом · <a class="hover:text-[#EAE5D9]" href="index.html">← Портфолио</a></p>
+      <a href="demo-tiho.html">На главную</a>
+      <a href="demo-tiho-about.html">О нас</a>
+    </footer>
+
+    <script src="demo-tiho.js"></script>
+  </body>
+</html>

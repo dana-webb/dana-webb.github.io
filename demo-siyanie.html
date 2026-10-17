@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Сияние — каталог ухода</title>
+    <link rel="stylesheet" href="demo-siyanie.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#top">Сияние</a>
+      <p class="logo-note">Каталог ухода</p>
+      <a class="header-tg" href="https://t.me/dana_web" target="_blank" rel="noopener noreferrer">
+        Написать в Telegram
+      </a>
+    </header>
+
+    <main id="top">
+      <!-- Герой: зачем каталог, а не лендинг с тремя услугами -->
+      <section class="hero">
+        <p class="eyebrow">Салон красоты · витрина</p>
+        <h1>Каталог средств, которые используем в салоне</h1>
+        <p class="lead">
+          Выберите категорию или найдите по названию. Корзины нет — это каталог,
+          не магазин. Нажмите на карточку и оставьте заявку: отложим позицию
+          или соберём набор к визиту.
+        </p>
+      </section>
+
+      <!-- Панель: поиск + фильтры категорий -->
+      <section class="toolbar" aria-label="Поиск и категории">
+        <label class="search">
+          <span class="visually-hidden">Поиск по каталогу</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Например: шампунь или сертификат"
+            autocomplete="off"
+          />
+        </label>
+
+        <div id="filters" class="filters" role="group" aria-label="Категории">
+          <!-- Кнопки категорий рисует JavaScript из списка товаров -->
+        </div>
+      </section>
+
+      <p id="catalog-meta" class="catalog-meta">Все товары</p>
+
+      <!-- Сюда JS вставляет карточки. В HTML специально пусто. -->
+      <section id="catalog" class="catalog" aria-live="polite"></section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Сияние · улица Примерная, 10 · ежедневно 10:00–21:00</p>
+      <p><a href="index.html">← Вернуться в портфолио</a></p>
+    </footer>
+
+    <!-- Модалка карточки товара: одна на всю страницу, содержимое подставляем из данных -->
+    <dialog id="product-modal" class="modal">
+      <div class="modal-inner">
+        <button type="button" class="modal-close" id="modal-close" aria-label="Закрыть">×</button>
+        <div id="modal-preview" class="modal-preview" aria-hidden="true"></div>
+        <div class="modal-body">
+          <p id="modal-category" class="eyebrow"></p>
+          <h2 id="modal-title"></h2>
+          <p id="modal-volume" class="volume"></p>
+          <p id="modal-desc" class="modal-desc"></p>
+          <p id="modal-price" class="price-lg"></p>
+
+          <form id="lead-form">
+            <input type="hidden" id="lead-product" name="product" />
+            <label for="lead-name">Имя</label>
+            <input id="lead-name" name="name" type="text" required minlength="2" maxlength="80" />
+            <label for="lead-phone">Телефон</label>
+            <input
+              id="lead-phone"
+              name="phone"
+              type="tel"
+              required
+              minlength="6"
+              maxlength="30"
+              placeholder="+7 900 000-00-00"
+            />
+            <button type="submit">Оставить заявку на эту позицию</button>
+            <a id="lead-telegram" class="ghost-link" href="https://t.me/dana_web" target="_blank" rel="noopener noreferrer">
+              Или написать в Telegram
+            </a>
+          </form>
+
+          <p id="lead-success" class="success" hidden>
+            Заявка принята. В этом концепте она остаётся на странице —
+            в боевом проекте уходит владельцу в Telegram.
+          </p>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="demo-siyanie.js"></script>
+  </body>
+</html>
