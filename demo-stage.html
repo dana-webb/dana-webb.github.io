@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050403" />
+    <title>Луч — первый экран</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="demo-stage.css" />
+  </head>
+  <body>
+    <a class="back" href="index.html#work">← к работам</a>
+
+    <section class="stage" data-stage>
+      <div class="void" aria-hidden="true"></div>
+      <div class="beam" aria-hidden="true"></div>
+      <div class="floor" aria-hidden="true"></div>
+      <div class="lamp" aria-hidden="true"></div>
+      <canvas id="dust" aria-hidden="true"></canvas>
+      <div class="vignette" aria-hidden="true"></div>
+
+      <div class="words">
+        <p class="kicker">Не ещё один шаблон.</p>
+        <h1>
+          Свет
+          <em>только в пятне</em>
+        </h1>
+        <p class="lead">
+          Проведите рукой. Слова проявляются там, где тепло —
+          остальное остаётся в темноте.
+        </p>
+      </div>
+
+      <div class="actions">
+        <a class="primary" href="index.html#contact">Обсудить такой экран</a>
+        <a class="ghost" href="index.html#work">Другие работы</a>
+      </div>
+
+      <p class="mark">концепт первого экрана · html / css / js</p>
+    </section>
+
+    <script src="demo-stage.js"></script>
+  </body>
+</html>
